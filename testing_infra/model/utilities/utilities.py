@@ -1,10 +1,22 @@
 import os
+import platform
 from subprocess import *
+import json
 
 
 def run_process(
-        cmd: str, timeout=1200, print_flag=True, attach=True, shell=False
+        cmd: list, timeout=1200, print_flag=True, attach=True, shell=False
 ) -> [int, str]:
+    """
+    will run the process via subprocess.Popen with a default values that acceptable with the system, the default values
+    that we set can be edited.
+    :param cmd: the command that we want to execute
+    :param timeout: timeout untill the process will shutdown
+    :param print_flag: in the future we'll use this flag as a indicator of printing the process output
+    :param attach: in the future we'll use this flag as a indicator of printing the process output into CI process
+    :param shell: use the current shell or not
+    :return: the output of the executed process and the exit code as tuple (out, exit).
+    """
     err = ""
     out = ""
     try:
@@ -46,14 +58,40 @@ def run_process(
 
 
 def get_env_parameters():
+    """
+    get the environment variables of the system
+    :return:
+    """
     os_env = dict(os.environ.copy())
     return os_env
 
 def read_json_file(jfile: str):
+    """
+    will open and convert a json file into the mem as dict type. get only json type and validate the input
+    :param jfile: json file
+    :return: dict
+    """
     try:
         if not jfile.endswith('.json'):
-            raise Exception('file is not json type')
-        with open(jfile, 'r') as f:
+            raise TypeError('file is not json type')
+        with open(jfile, 'r') as jf:
+            return json.load(jf)
     except Exception as e:
         print(e)
-        raise e
+        raise f'err {e}'
+
+def read_json_for_specific_platform(jfile: str):
+    """
+    load the jfile configuration by platform into the mem
+    :param jfile:
+    :return:
+    """
+    try:
+        current_platform = platform.system()
+        config = read_json_file(jfile)
+        platform_config = config.get(current_platform.upper(), {})
+        for key, value in platform_config.items():
+            os.environ[key] = value
+    except Exception as e:
+        raise Exception(f'could get and load the file {e}')
+

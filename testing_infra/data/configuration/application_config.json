@@ -1,8 +1,8 @@
 {
-  "windows":{
-    "execute_app": "python C:\\study\\projects\\automation_infrastructure_prototype\\product_application\\controller\\AppRun.py"
+  "WINDOWS":{
+    "EXECUTE_APP_PATH": "C:\\study\\projects\\automation_infrastructure_prototype\\product_application\\controller\\AutoVersion.py"
   },
-  "linux": {
-    "execute_app": "python C:\\study\\projects\\automation_infrastructure_prototype\\product_application\\controller\\AppRun.py"
+  "LINUX": {
+    "EXECUTE_APP_PATH": "C:\\study\\projects\\automation_infrastructure_prototype\\product_application\\controller\\AutoVersion.py"
   }
 }

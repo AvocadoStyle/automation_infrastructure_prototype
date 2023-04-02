@@ -1,5 +1,5 @@
-from ..model.VersionGenerator import VersionGenerator
-from .AppsController import create_apps_controller
+from product_application.model.VersionGenerator import VersionGenerator
+from AppsController import create_apps_controller
 
 def create_version(apps: list):
     apps = create_apps_controller(apps)

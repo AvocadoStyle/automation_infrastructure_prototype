@@ -1,4 +1,7 @@
+import os
 import sys
+# parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+# sys.path.append(parent_dir)
 from product_application.controller.VersionController import *
 
 if __name__ == '__main__':
