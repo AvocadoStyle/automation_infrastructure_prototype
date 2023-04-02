@@ -16,7 +16,7 @@ def run_process(
         process = Popen(
             cmd,
             env=get_env_parameters(),
-            encoding="ISO-8859-1",
+            # encoding="ISO-8859-1",
             stdout=PIPE,
             stderr=PIPE,
             universal_newlines=True,
@@ -48,3 +48,12 @@ def run_process(
 def get_env_parameters():
     os_env = dict(os.environ.copy())
     return os_env
+
+def read_json_file(jfile: str):
+    try:
+        if not jfile.endswith('.json'):
+            raise Exception('file is not json type')
+        with open(jfile, 'r') as f:
+    except Exception as e:
+        print(e)
+        raise e

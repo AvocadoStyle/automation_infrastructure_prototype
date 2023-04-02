@@ -1,0 +1,8 @@
+{
+  "windows":{
+    "execute_app": "python C:\\study\\projects\\automation_infrastructure_prototype\\product_application\\controller\\AppRun.py"
+  },
+  "linux": {
+    "execute_app": "python C:\\study\\projects\\automation_infrastructure_prototype\\product_application\\controller\\AppRun.py"
+  }
+}
