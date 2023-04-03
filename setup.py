@@ -7,5 +7,5 @@ setup(
         description='auto version controller product',
         author_email='edenraf@hotmail.com',
         url='https://github.com/AvocadoStyle/automation_infrastructure_prototype',
-        packages=find_packages(exclude=('testing_infra*',)
+        packages=find_packages(
             ))

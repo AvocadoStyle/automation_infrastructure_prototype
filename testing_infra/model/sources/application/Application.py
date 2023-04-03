@@ -18,11 +18,12 @@ class ApplicationClass():
             raise Exception(f'couldn\'t initialize the apps {e}')
 
     def build_app(self):
-        self.run_app_process(self.__command)
+        return self.run_app_process(self.__command)
 
     def run_app_process(self, cmd: list, timeout=1200):
         try:
             exit_code, out = utilities.run_process(cmd=cmd, timeout=timeout)
+            return exit_code, out
         except Exception as e:
             print(f'error {e}')
             raise e
